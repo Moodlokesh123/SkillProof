@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+}
+
+/* Main Container */
+
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 30px;
+}
+
+/* Result Card */
+
+.result-card {
+    width: 700px;
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Heading */
+
+.result-card h1 {
+    color: #4f46e5;
+    margin-bottom: 10px;
+    font-size: 42px;
+}
+
+.result-card hr {
+    margin: 25px 0;
+    border: none;
+    height: 2px;
+    background: #e5e7eb;
+}
+
+/* Result Details */
+
+.result-details {
+    margin-top: 20px;
+}
+
+.result-details p {
+    font-size: 22px;
+    margin: 15px 0;
+    color: #374151;
+}
+
+.result-details strong {
+    color: #111827;
+}
+
+/* Status */
+
+.pass {
+    color: #16a34a;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.fail {
+    color: #dc2626;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+/* Buttons */
+
+.result-buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Dashboard Button */
+
+.dashboard-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.dashboard-btn:hover {
+    background: #4338ca;
+}
+
+/* Certificate Button */
+
+.certificate-btn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.certificate-btn:hover {
+    background: #15803d;
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .result-card{
+
+        width:90%;
+
+        padding:25px;
+
+    }
+
+    .result-card h1{
+
+        font-size:30px;
+
+    }
+
+    .result-details p{
+
+        font-size:18px;
+
+    }
+
+    .result-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .dashboard-btn,
+    .certificate-btn{
+
+        width:100%;
+
+    }
+
+}

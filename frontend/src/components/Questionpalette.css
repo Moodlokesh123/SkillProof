@@ -1,0 +1,42 @@
+.palette{
+    margin-top:40px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.palette-grid{
+    display:grid;
+    grid-template-columns:repeat(5,60px);
+    gap:12px;
+    margin-top:20px;
+}
+
+.palette-grid button{
+
+    height:50px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:white;
+
+}
+
+.current{
+    background:#2563eb;
+}
+
+.answered{
+    background:#16a34a;
+}
+
+.not-answered{
+    background:#9ca3af;
+}

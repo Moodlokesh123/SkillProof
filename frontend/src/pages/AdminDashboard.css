@@ -1,0 +1,40 @@
+.admin-layout{
+    display:flex;
+}
+
+.dashboard{
+    flex:1;
+    padding:30px;
+    background:#f5f5f5;
+    min-height:100vh;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h2{
+    color:#4f46e5;
+}
+
+.card p{
+    font-size:40px;
+    font-weight:bold;
+    margin-top:15px;
+}

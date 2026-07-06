@@ -1,0 +1,23 @@
+.question-card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.question-card h2{
+    margin-bottom:20px;
+}
+
+.option{
+    display:block;
+    padding:12px;
+    margin:12px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#f5f5ff;
+}
