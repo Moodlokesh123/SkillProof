@@ -1,0 +1,78 @@
+.results-page {
+    padding: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.results-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-item {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.result-item h2 {
+    margin-bottom: 15px;
+}
+
+.result-item p {
+    margin: 7px 0;
+}
+
+.result-item button,
+.no-results button {
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+}
+
+.pass {
+    color: green;
+    font-weight: bold;
+}
+
+.fail {
+    color: red;
+    font-weight: bold;
+}
+
+.no-results {
+    text-align: center;
+    padding: 50px;
+}
+
+.error {
+    text-align: center;
+    color: red;
+}
+
+@media (max-width: 700px) {
+    .results-page {
+        padding: 20px;
+    }
+
+    .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

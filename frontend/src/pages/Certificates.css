@@ -1,0 +1,53 @@
+.certificates-page {
+    padding: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.certificates-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.certificates-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.certificate-item {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.certificate-item h2 {
+    margin-bottom: 18px;
+}
+
+.certificate-item p {
+    margin: 8px 0;
+}
+
+.certificate-item button,
+.no-certificates button {
+    margin-top: 15px;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+}
+
+.no-certificates {
+    text-align: center;
+    padding: 50px;
+}
+
+.error {
+    text-align: center;
+    color: red;
+}

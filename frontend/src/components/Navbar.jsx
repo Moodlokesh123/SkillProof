@@ -25,19 +25,27 @@ function Navbar() {
             <ul>
 
                 <li>
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/dashboard">
+                        Dashboard
+                    </Link>
                 </li>
 
                 <li>
-                    <Link to="/skills">Skills</Link>
+                    <Link to="/skills">
+                        Skills
+                    </Link>
                 </li>
 
                 <li>
-                    <Link to="/result/1">Results</Link>
+                    <Link to="/results">
+                        Results
+                    </Link>
                 </li>
 
                 <li>
-                    <Link to="/certificate/1">Certificates</Link>
+                    <Link to="/certificates">
+                        Certificates
+                    </Link>
                 </li>
 
                 <li>

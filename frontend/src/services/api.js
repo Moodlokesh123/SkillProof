@@ -1,20 +1,27 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://skillproof-8jhp.onrender.com/api/",
+    baseURL: "http://127.0.0.1:8000/api/",
 });
 
-// Automatically attach JWT token
+// Attach JWT only to protected API requests
 api.interceptors.request.use((config) => {
-
     const token = localStorage.getItem("access");
 
-    if (token) {
+    const publicEndpoints = [
+        "token/",
+        "users/register/",
+    ];
+
+    const isPublicEndpoint = publicEndpoints.some((endpoint) =>
+        config.url?.includes(endpoint)
+    );
+
+    if (token && !isPublicEndpoint) {
         config.headers.Authorization = `Bearer ${token}`;
     }
 
     return config;
-
 });
 
 export default api;

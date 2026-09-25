@@ -6,7 +6,9 @@ import Dashboard from "./pages/Dashboard";
 import Skills from "./pages/Skills";
 import Assessments from "./pages/Assessments";
 import Assessment from "./pages/Assessment";
+import Results from "./pages/Results";
 import Result from "./pages/Result";
+import Certificates from "./pages/Certificates";
 import Certificate from "./pages/Certificate";
 import VerifyCertificate from "./pages/VerifyCertificate";
 
@@ -23,24 +25,45 @@ import AdminProtected from "./components/AdminProtected";
 
 import NotFound from "./pages/NotFound";
 
+
+
 function App() {
+
     return (
+
         <BrowserRouter>
+
             <Routes>
 
-                {/* Public Routes */}
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                {/* ==========================================
+                    Public Routes
+                ========================================== */}
+
+                <Route
+                    path="/"
+                    element={<Login />}
+                />
+
+                <Route
+                    path="/register"
+                    element={<Register />}
+                />
+
                 <Route
                     path="/verify/:certificateId"
                     element={<VerifyCertificate />}
                 />
+
                 <Route
                     path="/admin/login"
                     element={<AdminLogin />}
                 />
 
-                {/* Candidate Routes */}
+
+                {/* ==========================================
+                    Candidate Routes
+                ========================================== */}
+
                 <Route
                     path="/dashboard"
                     element={
@@ -77,6 +100,23 @@ function App() {
                     }
                 />
 
+
+                {/* ==========================================
+                    Results Section
+                ========================================== */}
+
+                <Route
+                    path="/results"
+                    element={
+                        <Protected>
+                            <Results />
+                        </Protected>
+                    }
+                />
+
+
+                {/* Individual Result */}
+
                 <Route
                     path="/result/:attemptId"
                     element={
@@ -85,6 +125,23 @@ function App() {
                         </Protected>
                     }
                 />
+
+
+                {/* ==========================================
+                    Certificates Section
+                ========================================== */}
+
+                <Route
+                    path="/certificates"
+                    element={
+                        <Protected>
+                            <Certificates />
+                        </Protected>
+                    }
+                />
+
+
+                {/* Individual Certificate */}
 
                 <Route
                     path="/certificate/:id"
@@ -95,7 +152,11 @@ function App() {
                     }
                 />
 
-                {/* Admin Routes */}
+
+                {/* ==========================================
+                    Admin Routes
+                ========================================== */}
+
                 <Route
                     path="/admin/dashboard"
                     element={
@@ -150,21 +211,35 @@ function App() {
                     }
                 />
 
-                {/* 404 */}
+
+                {/* ==========================================
+                    404
+                ========================================== */}
+
                 <Route
                     path="*"
                     element={<NotFound />}
                 />
-		<Route
-   			 path="/admin/users"
-    			element={
-        		<AdminProtected>
-           		 <AdminUsers />
-      			</AdminProtected>
-   		 }
-		/>
+                <Route
+    path="/results"
+    element={
+        <Protected>
+            <Results />
+        </Protected>
+    }
+/>
+
+<Route
+    path="/certificates"
+    element={
+        <Protected>
+            <Certificates />
+        </Protected>
+    }
+/>
 
             </Routes>
+
         </BrowserRouter>
     );
 }

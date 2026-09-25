@@ -2,8 +2,8 @@ from django.urls import path
 
 from .views import (
     CertificateAPIView,
+    CertificateListAPIView,
     VerifyCertificateAPIView,
-
     AdminCertificateListAPIView,
     AdminCertificateDeleteAPIView,
 )
@@ -31,5 +31,6 @@ urlpatterns = [
         "admin/<int:pk>/delete/",
         AdminCertificateDeleteAPIView.as_view(),
     ),
+    path("", CertificateListAPIView.as_view()),
 
 ]

@@ -100,3 +100,28 @@ class AdminCertificateDeleteAPIView(generics.DestroyAPIView):
     serializer_class = CertificateSerializer
 
     permission_classes = [IsAdminUser]
+class CertificateListAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        certificates = Certificate.objects.filter(
+            user=request.user
+        ).select_related(
+            "attempt",
+            "attempt__assessment"
+        ).order_by("-issued_at")
+
+        results = []
+
+        for certificate in certificates:
+            results.append({
+                "certificate_id": str(certificate.certificate_id),
+                "attempt_id": certificate.attempt.id,
+                "assessment": certificate.attempt.assessment.title,
+                "score": certificate.attempt.score,
+                "percentage": certificate.attempt.percentage,
+                "issued_at": certificate.issued_at,
+                "qr_code": certificate.qr_code.url if certificate.qr_code else None,
+            })
+
+        return Response(results)    

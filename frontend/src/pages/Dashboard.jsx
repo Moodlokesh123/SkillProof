@@ -1,31 +1,25 @@
 import { useEffect, useState } from "react";
-
 import api from "../services/api";
 import "./Dashboard.css";
 import Navbar from "../components/Navbar";
 
 function Dashboard() {
-
     const [dashboard, setDashboard] = useState(null);
 
     useEffect(() => {
-
-        api.get("tests/dashboard/")
-            .then((response) => {
-
+        const fetchDashboard = async () => {
+            try {
+                const response = await api.get("tests/dashboard/");
                 setDashboard(response.data);
-
-            })
-            .catch((error) => {
-
+            } catch (error) {
                 console.log(error);
+            }
+        };
 
-            });
-
+        fetchDashboard();
     }, []);
 
     if (!dashboard) {
-
         return (
             <>
                 <Navbar />
@@ -40,11 +34,9 @@ function Dashboard() {
                 </h2>
             </>
         );
-
     }
 
     return (
-
         <>
             <Navbar />
 
@@ -57,45 +49,30 @@ function Dashboard() {
                 <div className="cards">
 
                     <div className="card">
-
                         <h2>Assessments</h2>
-
                         <p>{dashboard.total_assessments}</p>
-
                     </div>
 
                     <div className="card">
-
                         <h2>Certificates</h2>
-
                         <p>{dashboard.certificates}</p>
-
                     </div>
 
                     <div className="card">
-
                         <h2>Passed</h2>
-
                         <p>{dashboard.passed}</p>
-
                     </div>
 
                     <div className="card">
-
                         <h2>Failed</h2>
-
                         <p>{dashboard.failed}</p>
-
                     </div>
 
                 </div>
 
             </div>
-
         </>
-
     );
-
 }
 
 export default Dashboard;

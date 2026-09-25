@@ -4,7 +4,6 @@ import api from "../services/api";
 import "./Login.css";
 
 function Login() {
-
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -13,86 +12,117 @@ function Login() {
     });
 
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value,
         });
+
+        setError("");
     };
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
 
-        try {
+        if (!form.username.trim() || !form.password.trim()) {
+            setError("Please enter your username and password.");
+            return;
+        }
 
-            const response = await api.post("token/", form);
+        setLoading(true);
+        setError("");
+
+        try {
+            const response = await api.post("token/", {
+                username: form.username.trim(),
+                password: form.password,
+            });
 
             localStorage.setItem("access", response.data.access);
             localStorage.setItem("refresh", response.data.refresh);
 
             navigate("/dashboard");
-
-        } catch {
-
-            setError("Invalid username or password");
-
+        } catch (error) {
+            if (error.response?.status === 401) {
+                setError("Invalid username or password.");
+            } else {
+                setError("Unable to connect to the server. Please try again.");
+            }
+        } finally {
+            setLoading(false);
         }
-
     };
 
     return (
-
         <div className="login-container">
-
             <div className="login-card">
 
-                <h1>SkillProof</h1>
+                <div className="login-header">
+                    <div className="logo">SP</div>
 
-                <p>Login to continue your assessments</p>
+                    <h1>Welcome Back</h1>
 
-                <form onSubmit={handleSubmit}>
+                    <p>
+                        Login to your SkillProof account
+                    </p>
+                </div>
 
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={form.username}
-                        onChange={handleChange}
-                    />
+                <form onSubmit={handleSubmit} className="login-form">
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={form.password}
-                        onChange={handleChange}
-                    />
+                    <div className="input-group">
+                        <label>Username</label>
 
-                    <button type="submit">
-                        Login
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="Enter your username"
+                            value={form.username}
+                            onChange={handleChange}
+                            autoComplete="username"
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label>Password</label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            value={form.password}
+                            onChange={handleChange}
+                            autoComplete="current-password"
+                        />
+                    </div>
+
+                    {error && (
+                        <div className="error">
+                            {error}
+                        </div>
+                    )}
+
+                    <button
+                        type="submit"
+                        className="login-button"
+                        disabled={loading}
+                    >
+                        {loading ? "Logging in..." : "Login"}
                     </button>
 
                 </form>
 
-                {error && (
-                    <p className="error">{error}</p>
-                )}
-
-                <p className="register-link">
-                    Don't have an account?{" "}
+                <div className="register-link">
+                    <span>Don't have an account?</span>{" "}
                     <Link to="/register">
-                        Register
+                        Create an account
                     </Link>
-                </p>
+                </div>
 
             </div>
-
         </div>
-
     );
-
 }
 
 export default Login;
